@@ -31,6 +31,8 @@ function CurrencyConverter() {
 
     const currencies = ['BTC', 'ETH', 'USD', 'XRP', 'LTC', 'ADA'];
 
+    const rapidApi: string = process.env.REACT_APP_RAPID_API_KEY as string
+
     function convert(): MouseEventHandler<HTMLButtonElement>|undefined{
 
         axios.request({
@@ -39,7 +41,7 @@ function CurrencyConverter() {
             params: {from_currency: chosenPrimaryCurrency, function: 'CURRENCY_EXCHANGE_RATE', to_currency: chosenSecondaryCurrency},
             headers: {
                 'x-rapidapi-host': 'alpha-vantage.p.rapidapi.com',
-                'x-rapidapi-key': 'd0b88e1566msha2ec5133072eadap1cc5ddjsn74cd066856d7'
+                'x-rapidapi-key': rapidApi
             }
             }).then(function (response: AxiosResponse) {
             //console.log(response.data['Realtime Currency Exchange Rate']['5. Exchange Rate']);
